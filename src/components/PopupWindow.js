@@ -44,28 +44,27 @@ class EditModal extends React.Component {
   getBasketItems = () => {
     const db = fire.firestore();
     db.collection("users")
-        .doc(fire.auth().currentUser.uid)
-        .collection("basket")
-        .get()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            this.setState({
-              basketItems: [...this.state.basketItems, doc.data().id ],
+      .doc(fire.auth().currentUser.uid)
+      .collection("basket")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.setState({
+            basketItems: [...this.state.basketItems, doc.data().id ],
 
-            });
           });
         });
+      });
   };
 
   componentDidMount() {
     this.authListener();
     setTimeout(()=> {
-          if (this.state.user) {
-            this.getBasketItems();
-            this.handleAlreadyInBasket()
-          }
-        }, 1000
-    )
+      if (this.state.user) {
+        this.getBasketItems();
+        this.handleAlreadyInBasket()
+      }
+    }, 1000)
   }
 
   handleMinusButtonClick = () => {
@@ -88,7 +87,7 @@ class EditModal extends React.Component {
 
   handleSave = () => {
     const { onSave } = this.props;
-    onSave(this.state);
+    onSave({category: this.state.category, count: this.state.count, description: this.state.description, id: this.state.id, image: this.state.image, name: this.state.name, price: this.state.price, volume: this.state.volume });
   };
 
   handleAlreadyInBasket = () => {
@@ -160,14 +159,14 @@ class EditModal extends React.Component {
             Close
           </Button>
           {!inBasket ? (
-              <Button onClick={this.handleSave} color="primary">
-                <span className="ContentAddToCartSpan"> Add </span>
-                <FontAwesomeIcon icon="cart-plus" />
-              </Button>
+            <Button onClick={this.handleSave} color="primary">
+              <span className="ContentAddToCartSpan"> Add </span>
+              <FontAwesomeIcon icon="cart-plus" />
+            </Button>
           ) : (
-              <Button>
-                <span className="ContentAddToCartSpan" onClick={this.handleRedirectToBasket}> Already in basket </span>
-              </Button>
+            <Button>
+              <span className="ContentAddToCartSpan" onClick={this.handleRedirectToBasket}> Already in basket </span>
+            </Button>
           )}
         </DialogActions>
         {redirectToBasket && <Redirect to="/basket" />}

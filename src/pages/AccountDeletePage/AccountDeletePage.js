@@ -52,7 +52,7 @@ class DeleteAccount extends React.Component {
         localStorage.setItem("user", user.uid);
         this.getUserData();
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, toHome: true });
         localStorage.removeItem("user");
       }
     });

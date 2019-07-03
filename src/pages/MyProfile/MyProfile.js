@@ -17,6 +17,7 @@ import firebase from "firebase";
 import DeleteDialog from "../../components/AccountDeleteDialog";
 import PasswordChange from "../../components/AccountChangePassword";
 import MyAccount from "../../components/MyAccount";
+import Loader from '../../components/Loader';
 
 const styles = () => ({
   card: {
@@ -48,7 +49,8 @@ class MyProfile extends React.Component {
       redirect: false,
       passwordChange: false,
       numberValid: true,
-      emailValid: true
+      emailValid: true,
+      loader: true
     };
   }
 
@@ -59,12 +61,12 @@ class MyProfile extends React.Component {
   authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user, loader: false });
         localStorage.setItem("user", user.uid);
         this.getUserData();
         this.setState({ passwordConf: "" });
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, redirect: true });
         localStorage.removeItem("user");
       }
     });
@@ -150,7 +152,8 @@ class MyProfile extends React.Component {
       passwordChange,
       numberValid,
       emailValid,
-      user
+      user,
+      loader
     } = this.state;
     return (
       <div>
@@ -265,8 +268,6 @@ class MyProfile extends React.Component {
                 />
               </div>
               <Typography color="textSecondary">
-                {" "}
-                <br />
                 To make changes in your personal data, you should confirm your
                 password.
               </Typography>
@@ -324,6 +325,7 @@ class MyProfile extends React.Component {
                 />
               ) : null}
               {redirect && <Redirect to="/" />}
+              {loader && <Loader/>}
             </CardActions>
           </Card>
         </div>

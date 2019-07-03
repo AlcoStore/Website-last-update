@@ -98,6 +98,12 @@ class Home extends React.Component {
     this.getData();
     this.getCategories();
     this.authListener();
+    // if(this.props.location.state.categories){
+    //   this.setState({
+    //     categories: this.props.location.state.categories
+    //   })
+      // this.props.location.state = {};
+    // }
   }
 
   onBasketClick = () => {
@@ -120,64 +126,62 @@ class Home extends React.Component {
       itemsobj,
       drinks,
       basketitemcount,
-        loader
+      loader
     } = this.state;
     return (
-        <div className="HomeMainDiv main-wrap">
-          <Header
-              onCatChanged={this.onCatClick}
-              basketitemcount={basketitemcount}
-              itemsobj={itemsobj}
-              onSearch={this.onSearchChanged}
-          />
-
-          <div className="shp-container" style={{paddingTop: '30px'}}>
-            <div className="HomeCatContDiv shp-row">
-              {searchlist.length === 0 &&
+      <div className="HomeMainDiv main-wrap">
+        <Header
+          onCatChanged={this.onCatClick}
+          basketitemcount={basketitemcount}
+          itemsobj={itemsobj}
+          onSearch={this.onSearchChanged}
+        />
+        <div className="shp-container" style={{ paddingTop: '30px' }}>
+          <div className="HomeCatContDiv shp-row">
+            {searchlist.length === 0 &&
               !categories &&
               drinks.map((item, index) => {
                 return (
-                    <Categories
-                        key={index}
-                        {...item}
-                        onCatClick={this.onCatClick}
-                    />
+                  <Categories
+                    key={index}
+                    {...item}
+                    onCatClick={this.onCatClick}
+                  />
                 );
               })}
-              {searchlist.length === 0 &&
+            {searchlist.length === 0 &&
               categories &&
               itemsobj
-                  .filter(item =>
-                      categories.toLowerCase() === "all"
-                          ? itemsobj
-                          : item.category.toLowerCase() === categories.toLowerCase()
-                  )
-                  .map(item => {
-                    return (
-                        <Content
-                            key={item.id}
-                            {...item}
-                            onBasketClick={this.onBasketClick}
-                        />
-                    );
-                  })}
-              {searchlist.length !== 0 &&
+                .filter(item =>
+                  categories.toLowerCase() === "all"
+                    ? itemsobj
+                    : item.category.toLowerCase() === categories.toLowerCase()
+                )
+                .map(item => {
+                  return (
+                    <Content
+                      key={item.id}
+                      {...item}
+                      onBasketClick={this.onBasketClick}
+                    />
+                  );
+                })}
+            {searchlist.length !== 0 &&
               searchlist.map(item => {
                 return (
-                    <Content
-                        key={item.id}
-                        {...item}
-                        onBasketClick={this.onBasketClick}
-                    />
+                  <Content
+                    key={item.id}
+                    {...item}
+                    onBasketClick={this.onBasketClick}
+                  />
                 );
               })}
-            </div>
-
           </div>
-          {loader && <Loader/>}
-          <Footer onCatChanged={this.onCatClick}/>
 
         </div>
+        {loader && <Loader />}
+        <Footer onCatChanged={this.onCatClick} />
+      </div>
     );
   }
 }
