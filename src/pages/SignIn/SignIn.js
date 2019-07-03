@@ -41,6 +41,12 @@ class SignIn extends React.Component {
     };
   }
 
+  handleSignIn = (event) => {
+      if (event.keyCode === 13){
+        this.signIn(event)
+      }
+    }
+
   componentDidMount() {
     this.authListener();
   }
@@ -133,6 +139,7 @@ class SignIn extends React.Component {
                     variant="outlined"
                     onChange={e => this.handleInputChange(e, "email")}
                     value={email}
+                    onKeyDown={this.handleSignIn}
                   />
                 </div>
                 <div>
@@ -147,6 +154,7 @@ class SignIn extends React.Component {
                     variant="outlined"
                     onChange={e => this.handleInputChange(e, "password")}
                     value={password}
+                    onKeyDown={this.handleSignIn}
                   />
                 </div>
                 {errorMessage &&

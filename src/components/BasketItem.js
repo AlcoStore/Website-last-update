@@ -71,7 +71,7 @@ class BasketItem extends React.Component {
   handleItemCountChange = event => {
     const { onTotalChange } = this.props;
     const { count, price } = this.state;
-    if (event.target.value > 1) {
+    if (event.target.value > 0) {
       this.setState({
         count: parseInt(event.target.value)
       });
@@ -109,6 +109,8 @@ class BasketItem extends React.Component {
         <Paper className="BasketPaper">
           <Grid container spacing={2}>
             <Grid item>
+              <Typography variant="subtitle1" style={{position:"absolute", right: '10px', top: '10px' }}>AMD {count * price}</Typography>
+
               <ButtonBase className="BasketImage">
                 <img className="BasketImg" alt="complex" src={image} />
               </ButtonBase>
@@ -144,8 +146,8 @@ class BasketItem extends React.Component {
                   </div>
                 </Grid>
               </Grid>
-              <Grid item>
-                <Typography variant="subtitle1" style={{marginBottom: '150%'}}>AMD {count * price}</Typography>
+              <Grid  style={
+                {position: 'absolute', bottom:'10px', right: '10px'}}>
                   <Typography
                       variant="body2"
                       style={{ cursor: "pointer" }}

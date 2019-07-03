@@ -15,7 +15,8 @@ class MyAccount extends Component {
       myAccount: false,
       redirect: false,
       initials: "",
-      anchorEl: null
+      anchorEl: null,
+      user: null
     };
   }
 
@@ -68,8 +69,10 @@ class MyAccount extends Component {
   }
 
   logout() {
+    this.setState({user: null});
     fire.auth().signOut();
     this.setState({ redirect: true });
+
   }
 
   render() {
@@ -96,7 +99,7 @@ class MyAccount extends Component {
           </Menu>
         </div>
         {myAccount && <Redirect to="/my-profile" /> }
-        {redirect && <Redirect to="/" />}
+        {redirect && <Redirect to="/my-profile" />}
       </div>
     );
   }
