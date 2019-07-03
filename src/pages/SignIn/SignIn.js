@@ -69,7 +69,7 @@ class SignIn extends React.Component {
         })
         if(!cred.user.emailVerified){
           fire.auth().signOut()
-          this.setState({loader:false})
+          this.setState({loader:false, password: ""})
         }
       }).then(()=> {this.setState({loader: false})})
       .catch(error => {

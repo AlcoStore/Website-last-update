@@ -20,7 +20,6 @@ class NewSnackbar extends React.Component{
 
     render() {
         const { vertical, horizontal, open } = this.state;
-        console.log('mejn enq')
         return (
             <div>
                 <Snackbar

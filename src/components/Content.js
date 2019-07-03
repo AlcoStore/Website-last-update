@@ -166,10 +166,7 @@ class Content extends React.Component {
       });
       if (bool === false) {
         docRef.add({ ...item });
-        this.setState({inBasket: true, loader: false})
-        this.setState({
-          snackbar: true
-        });
+        this.setState({inBasket: true, loader: false, snackbar: true})
         setTimeout(()=> {
           this.setState({snackbar: false})
         }, 2000);

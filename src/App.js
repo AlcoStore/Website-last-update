@@ -24,12 +24,12 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Link to="/"></Link>
+          <Link to='/'></Link>
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Home}/>
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
-            <Route path="/basket" component={BasketList} />
+            <Route path="/basket" component={BasketList}/>
             <Route path="/my-profile" component={MyProfile} />
             <Route path="/about-us" component={AboutUs} />
             <Route path="/delete-account" component={DeleteAccount} />

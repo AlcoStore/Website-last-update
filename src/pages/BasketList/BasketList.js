@@ -11,8 +11,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Footer from "../../components/Footer";
 import MyAccount from "../../components/MyAccount";
 import Loader from '../../components/Loader';
-import {Redirect} from "react-router-dom";
-import CheckOutDialog from '../../components/CheckOutDialog'
+import { Redirect } from "react-router-dom";
+import CheckOutDialog from '../../components/CheckOutDialog';
+import Header from "../../components/Header";
 
 class BasketList extends React.Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class BasketList extends React.Component {
       check: true,
       idBase: "",
       user: null,
-      loader: true
+      loader: true,
+      redirect: false,
+      // categories: ""
     };
   }
 
@@ -42,7 +45,7 @@ class BasketList extends React.Component {
         localStorage.setItem("user", user.uid);
         this.getBasketItems();
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, redirect: true });
         localStorage.removeItem("user");
       }
     });
@@ -69,7 +72,6 @@ class BasketList extends React.Component {
         this.setState({ loader: false });
       });
   };
-
 
   RemoveItem = price => {
     const { totalPrice } = this.state;
@@ -99,10 +101,23 @@ class BasketList extends React.Component {
   //     .catch(() => console.log("error"));
   // };
 
+  // onCatClick = name => {
+  //   this.setState({
+  //     redtohome: true,
+  //     categories: name === "homepage" ? "" : name
+  //   });
+  // };
+
   render() {
-    const { basketItems, totalPrice, check, user, loader} = this.state;
+    const { basketItems, totalPrice, check, user, loader, redirect } = this.state;
     return (
       <div className="main-wrap">
+        {/* <Header
+          onCatChanged={this.onCatClick}
+          basketitemcount={basketItems.length}
+          // itemsobj={itemsobj}
+          onSearch={this.onSearchChanged}
+        /> */}
         <AppBar position="static" className="HeaderContainerAppBar">
           <Toolbar>
             <div className="LogoForAlcoStoreContainer1">
@@ -115,45 +130,46 @@ class BasketList extends React.Component {
               </Link>
             </div>
             <div style={{ position: "absolute", right: "0" }}>
-              {user && <MyAccount className="SignInUpUserLinks" /> }
+              {user && <MyAccount className="SignInUpUserLinks" />}
             </div>
           </Toolbar>
         </AppBar>
         <Toolbar />
         {loader ? (
-          <Loader/>
+          <Loader />
         ) : (
-          <div>
             <div>
-              {basketItems.map((item, index) => {
-                return (
-                  <BasketItem
-                    key={index}
-                    {...item}
-                    onRemove={this.RemoveItem}
-                    onTotalChange={this.TotalChange}
-                  />
-                );
-              })}
-            </div>
-            <div className="EmptyBasket">
-              <Grid className="EmptyBasketGrid">
-                <Grid>
-                  <Paper className="EmptyBasketText">
-                    {check
-                      ? "Your basket is empty."
-                      : "Total Price: AMD " + totalPrice}
-                  </Paper>
+              <div>
+                {basketItems.map((item, index) => {
+                  return (
+                    <BasketItem
+                      key={index}
+                      {...item}
+                      onRemove={this.RemoveItem}
+                      onTotalChange={this.TotalChange}
+                    />
+                  );
+                })}
+              </div>
+              <div className="EmptyBasket">
+                <Grid className="EmptyBasketGrid">
+                  <Grid>
+                    <Paper className="EmptyBasketText">
+                      {check
+                        ? "Your basket is empty."
+                        : "Total Price: AMD " + totalPrice}
+                    </Paper>
+                  </Grid>
                 </Grid>
-              </Grid>
-              {!check && <CheckOutDialog
+                {!check && <CheckOutDialog
                   totalPrice={totalPrice}
-              />}
+                />}
+              </div>
             </div>
-          </div>
-        )}
-
+          )}
         <Footer />
+        {redirect && <Redirect to="/" />}
+        {/* {redtohome && <Redirect to={{ pathname: '/', state: { categories: categories }}}/>} */}
       </div>
     );
   }

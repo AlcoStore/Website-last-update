@@ -12,7 +12,7 @@ class Categories extends React.Component {
     const { name, image } = this.props;
 
     return (
-        <div class="shp-col-md-3 shp-col-sm-6">
+        <div className="shp-col-md-3 shp-col-sm-6">
           <Card className="CategoryItem" onClick={() => this.handleCatClick(name)}>
             <CardContent className="CategoryImageDiv">
               <img alt={name} src={image} className="CategoryImage" />
