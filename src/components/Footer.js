@@ -67,17 +67,6 @@ class Footer extends React.Component {
             </div>
             <div className='footerLinkNames'>
               <a
-                  rel="noopener noreferrer"
-                  className='footerLinkNames'
-                  onClick={event =>
-                      this.handleClose(event, "All")
-                  }
-              >
-                All Products
-              </a>
-            </div>
-            <div className='footerLinkNames'>
-              <a
                 href="http://localhost:3000/"
                 rel="noopener noreferrer"
                 className='footerLinkNames'

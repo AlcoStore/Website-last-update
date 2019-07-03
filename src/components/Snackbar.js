@@ -30,7 +30,8 @@ class NewSnackbar extends React.Component{
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">The chosen item is in basket</span>}
+                    style={{ color: 'green' }}
+                    message={<span id="message-id">The chosen item is in the basket</span>}
                 />
             </div>
         )

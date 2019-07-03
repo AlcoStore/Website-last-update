@@ -139,7 +139,7 @@ class BasketList extends React.Component {
           <Loader />
         ) : (
             <div>
-              <div>
+              <div className="basket-items-container">
                 {basketItems.map((item, index) => {
                   return (
                     <BasketItem
@@ -151,7 +151,7 @@ class BasketList extends React.Component {
                   );
                 })}
               </div>
-              <div className="EmptyBasket">
+              <div className="basket-items-container">
                 <Grid className="EmptyBasketGrid">
                   <Grid>
                     <Paper className="EmptyBasketText">

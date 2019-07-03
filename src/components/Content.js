@@ -245,7 +245,7 @@ class Content extends React.Component {
               <FontAwesomeIcon icon="plus" />
             </button>
           </div>
-          <h4 className="ContentName">{volume} l</h4>
+          <h4 className="ContentName">{volume} L</h4>
         </CardContent>
         <Divider variant="middle" />
         <CardActions>
@@ -260,7 +260,7 @@ class Content extends React.Component {
                   onClick={this.handleClick}
                   style={{ color: '#00bcd4', fontSize: '18px'}}
                 >
-                  Add
+                  Add to
                   <FontAwesomeIcon icon="cart-plus" style={{paddingLeft: '5px', color: '#00bcd4', fontSize: '20px'}}/>
                 </span>
               </div>
@@ -271,15 +271,17 @@ class Content extends React.Component {
                   onClick={this.handleRedirectToBasket}
                   style={{color: "green", fontSize: '18px'}}
                 >
-                  Already in basket
-                   <FontAwesomeIcon
-                       icon={faCheckCircle}
-                       style={{
-                         color: 'green',
-                         marginLeft: '5px',
-                         fontSize: '18px'
-                       }}
-                   />
+                  <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      style={{
+                        color: 'green',
+                        marginLeft: '5px',
+                        fontSize: '18px'
+                      }}
+                  />
+                  Already in
+                  <FontAwesomeIcon icon="cart-plus" style={{paddingLeft: '5px', color: 'green', fontSize: '22px'}}/>
+
                 </span>
               </div>
             )}

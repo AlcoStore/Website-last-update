@@ -1500,8 +1500,13 @@ body {
 .DialogTitle {
   text-align: center;
 }
+
 .DialogContent3 {
   text-align: center;
+}
+
+.basket-items-container {
+  padding: 0 15px;
 }
 .BasketRoot {
   flex-grow: 1;
@@ -1510,7 +1515,8 @@ body {
   padding: 15px;
   margin-top: 20px;
   position: relative;
-  margin-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 700px;
 }
 .BasketImage {

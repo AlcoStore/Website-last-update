@@ -62,6 +62,12 @@ class SignUp extends React.Component {
     return age;
   }
 
+  handleSignUp = (event) => {
+    if (event.keyCode === 13){
+      this.signUp(event)
+    }
+  }
+
   signUp(e) {
     const {name, surname, age, number, email} = this.state;
 this.setState({loader: true})
@@ -198,7 +204,7 @@ this.setState({loader: true})
                     <TextField
                       error={!ageValid}
                       id="date"
-                      label="Birthdayzz"
+                      label="Birth Date"
                       type="date"
                       margin="normal"
                       onChange={e => this.handleInputChange(e, "age")}
@@ -290,6 +296,7 @@ this.setState({loader: true})
                       value={passwordConf}
                       fullWidth
                       className="SignUpCardGridInput"
+                      onKeyDown={this.handleSignUp}
                     />
                   </div>
                 </CardContent>

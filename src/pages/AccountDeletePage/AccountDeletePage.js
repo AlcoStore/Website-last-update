@@ -81,12 +81,12 @@ class DeleteAccount extends React.Component {
     );
 
     user.reauthenticateWithCredential(credential).then(() => {
-      this.setState({loader: true})
-      user.delete();
+      this.setState({loader: true});
       const db = fire.firestore();
       db.collection("users")
-        .doc(fire.auth().currentUser.uid)
-        .delete();
+          .doc(fire.auth().currentUser.uid)
+          .delete();
+      user.delete();
       this.changeHome();
     }).then (()=> {this.setState({loader: false})});
   };

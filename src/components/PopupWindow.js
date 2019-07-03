@@ -149,7 +149,7 @@ class EditModal extends React.Component {
                     <FontAwesomeIcon icon="plus" />
                   </button>
                 </div>
-                <h4 className="ContentName">{volume} l</h4>
+                <h4 className="ContentName">{volume} L</h4>
               </div>
             </div>
           </div>
