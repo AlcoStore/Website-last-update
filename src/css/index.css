@@ -1,7 +1,11 @@
 * {
   box-sizing: border-box;
 }
-
+body{
+  background-color: #e4e4e4 !important;
+  background-image: url("../Images/background.jpg");
+  background-size: 30vh;
+}
 /*Grid*/
 .shp-container {
   width: 100%;
@@ -1268,10 +1272,8 @@
   }
 }
 /* Main.js style */
-html,
-body {
-  background: #e4e4e4 !important;
-}
+
+
 /* Header.js style */
 
 .HeaderContainerAppBar {
@@ -1279,13 +1281,14 @@ body {
 }
 .MuiCardActions-root .MuiButtonBase-root {
   color: white;
-  background-color: #ee5c8f;
+  background-color: #03b0c6;
 }
-.MuiCardActions-root .MuiButtonBase-root :hover {
-  background-color: #ff5ca0;
+.MuiCardActions-root .MuiButtonBase-root:hover{
+  color: white;
+  background-color: #026976;
 }
 .MuiTypograthy-h5 {
-  color: #ff5ca0;
+  color: #03b0c6;
 }
 .MuiIconButton-label {
   color: white;
@@ -1348,7 +1351,7 @@ body {
   height: 100%;
 }
 .ImageForAlcoStoreContainer {
-  width: 55px;
+  width: 140px;
 }
 .SignInUpUserDiv a {
   text-decoration: none;
@@ -1358,6 +1361,18 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.header-col {
+  display: flex;
+}
+
+.header-col-right{
+  justify-content: flex-end;
+}
+
+.header-col-center {
+  justify-content: center;
 }
 
 .header-right-wrap,
@@ -1536,7 +1551,8 @@ body {
   padding: 15px;
   margin-top: 20px;
   position: relative;
-  margin-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 700px;
 }
 .EmptyBasketGrid {
@@ -1568,9 +1584,7 @@ body {
   color: white;
   background-color: #03b0c6;
 }
-.SignInUpUserDiv .MuiButtonBase-root :hover {
-  background-color: #ff5ca0;
-}
+
 .SignUpCard {
   min-width: 50%;
 }
@@ -1782,6 +1796,7 @@ body {
   width: 100%;
   height: 100%;
   vertical-align: middle;
+  border-radius: 50%;
 }
 .AboutUsContentDivDesc {
   padding: 10px 20px;
@@ -1853,7 +1868,7 @@ body {
 }
 
 .contactUs {
-  color: #ff8f9d;
+  color: #03b0c6;
 }
 
 .contactUs:hover {

@@ -118,7 +118,7 @@ class Header extends React.Component {
           return product.name.toLowerCase().includes(searchvalue.toLowerCase());
         });
         let dinamicProductsbyCat = this.props.itemsobj.filter(product => {
-          return product.Categories.toLowerCase().includes(
+          return product.category.toLowerCase().includes(
             searchvalue.toLowerCase()
           );
         });
@@ -140,176 +140,185 @@ class Header extends React.Component {
             <AppBar className="HeaderContainerAppBar">
               <Toolbar className="HeaderContainer">
                 <div className="header-container">
-                  <div className="header-left-wrap">
-                    <div className="HeaderMenuCategories">
-                      <IconButton
-                        edge="end"
-                        aria-label="List of Categories"
-                        aria-controls="menu-list-grow"
-                        aria-haspopup="true"
-                        color="inherit"
-                        ref={anchorRef}
-                        onClick={this.handleToggle}
-                      >
-                        <FontAwesomeIcon icon="bars" />
-                      </IconButton>
-                      <Popper
-                        open={open}
-                        anchorEl={anchorRef.current}
-                        keepMounted
-                        transition
-                        disablePortal
-                        className="HeaderMenuCategoriesList"
-                      >
-                        {({ TransitionProps, placement }) => (
-                          <Grow
-                            {...TransitionProps}
-                            style={{
-                              transformOrigin:
-                                placement === "bottom"
-                                  ? "center top"
-                                  : "center bottom"
-                            }}
-                          >
-                            <Paper id="menu-list-grow">
-                              <ClickAwayListener
-                                onClickAway={event => this.handleClose(event, null)}
+                  <div className="header-col shp-col-4">
+                    <div className="header-left-wrap">
+                      <div className="HeaderMenuCategories">
+                        <IconButton
+                            edge="end"
+                            aria-label="List of Categories"
+                            aria-controls="menu-list-grow"
+                            aria-haspopup="true"
+                            color="inherit"
+                            ref={anchorRef}
+                            onClick={this.handleToggle}
+                        >
+                          <FontAwesomeIcon icon="bars" />
+                        </IconButton>
+                        <Popper
+                            open={open}
+                            anchorEl={anchorRef.current}
+                            keepMounted
+                            transition
+                            disablePortal
+                            className="HeaderMenuCategoriesList"
+                        >
+                          {({ TransitionProps, placement }) => (
+                              <Grow
+                                  {...TransitionProps}
+                                  style={{
+                                    transformOrigin:
+                                        placement === "bottom"
+                                            ? "center top"
+                                            : "center bottom"
+                                  }}
                               >
-                                <MenuList>
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Champagne")
-                                    }
+                                <Paper id="menu-list-grow">
+                                  <ClickAwayListener
+                                      onClickAway={event => this.handleClose(event, null)}
                                   >
-                                    Champagne
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Wine")
-                                    }
-                                  >
-                                    Wine
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Liqueur")
-                                    }
-                                  >
-                                    Liqueur
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Cocktail")
-                                    }
-                                  >
-                                    Cocktail
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Vodka")
-                                    }
-                                  >
-                                    Vodka
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Brandy")
-                                    }
-                                  >
-                                    Brandy
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "Beer")
-                                    }
-                                  >
-                                    Beer
-                                  </MenuItem>
-                                  <Divider variant="middle" />
-                                  <MenuItem
-                                    onClick={event =>
-                                      this.handleClose(event, "All")
-                                    }
-                                  >
-                                    All
-                                  </MenuItem>
-                                </MenuList>
-                              </ClickAwayListener>
-                            </Paper>
-                          </Grow>
-                        )}
-                      </Popper>
-                    </div>
-                    <div className="SearchField">
-                      <div className="SearchFieldIcon">
-                        <FontAwesomeIcon icon="search" />
+                                    <MenuList>
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Champagne")
+                                          }
+                                      >
+                                        Champagne
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Wine")
+                                          }
+                                      >
+                                        Wine
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Liqueur")
+                                          }
+                                      >
+                                        Liqueur
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Cocktail")
+                                          }
+                                      >
+                                        Cocktail
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Vodka")
+                                          }
+                                      >
+                                        Vodka
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Brandy")
+                                          }
+                                      >
+                                        Brandy
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "Beer")
+                                          }
+                                      >
+                                        Beer
+                                      </MenuItem>
+                                      <Divider variant="middle" />
+                                      <MenuItem
+                                          onClick={event =>
+                                              this.handleClose(event, "All")
+                                          }
+                                      >
+                                        All
+                                      </MenuItem>
+                                    </MenuList>
+                                  </ClickAwayListener>
+                                </Paper>
+                              </Grow>
+                          )}
+                        </Popper>
                       </div>
-                      <InputBase
-                        placeholder="Search…"
-                        className="SearchFieldInput"
-                        inputProps={{ "aria-label": "Search" }}
-                        onChange={this.handleChange}
-                        onKeyDown={this.handleSearchClick}
-                        value={searchvalue}
-                      />
+                      <div className="SearchField">
+                        <div className="SearchFieldIcon">
+                          <FontAwesomeIcon icon="search" />
+                        </div>
+                        <InputBase
+                            placeholder="Search…"
+                            className="SearchFieldInput"
+                            inputProps={{ "aria-label": "Search" }}
+                            onChange={this.handleChange}
+                            onKeyDown={this.handleSearchClick}
+                            value={searchvalue}
+                        />
+                      </div>
                     </div>
+
                   </div>
-                  <div className="LogoForAlcoStoreContainer">
-                    <Link to="/">
-                      <img
-                        src={lcoLogo}
-                        alt={lcoLogo}
-                        className="ImageForAlcoStoreContainer"
-                        onClick={event => this.handleClose(event, "homepage")}
-                      />
-                    </Link>
+                  <div className="header-col header-col-center shp-col-4">
+                    <div className="LogoForAlcoStoreContainer">
+                      <Link to="/">
+                        <img
+                            src={lcoLogo}
+                            alt={lcoLogo}
+                            className="ImageForAlcoStoreContainer"
+                            onClick={event => this.handleClose(event, "homepage")}
+                        />
+                      </Link>
+                    </div>
+
                   </div>
-                  <div className="header-right-wrap">
-                    {user &&
+                  <div className="header-col header-col-right shp-col-4">
+                    <div className="header-right-wrap">
+                      {user &&
                       <div className="BasketBadgeDiv">
                         <Link to="/basket" color="inherit">
                           <Badge
-                            className="BasketBadge"
-                            badgeContent={basketitemcount}
-                            color="secondary"
+                              className="BasketBadge"
+                              badgeContent={basketitemcount}
+                              color="secondary"
                           >
                             <IconButton
-                              edge="start"
-                              aria-label="List of Categories"
-                              aria-controls="menu-list-grow"
-                              aria-haspopup="true"
-                              color="inherit"
+                                edge="start"
+                                aria-label="List of Categories"
+                                aria-controls="menu-list-grow"
+                                aria-haspopup="true"
+                                color="inherit"
                             >
                               <FontAwesomeIcon icon="cart-plus" />
                             </IconButton>
                           </Badge>
                         </Link>
                       </div>
-                    }
-                    <div className="SignInUpUserDiv">
-                      {user ? (
-                        <MyAccount className="SignInUpUserLinks" />
-                      ) : (
-                          <div>
-                            <Link to="/sign-in" className="SignInUpUserLinks">
-                              <Button variant="contained" color="primary">
-                                Sign In
-                             </Button>
-                            </Link>
-                            <Link to="/sign-up" className="SignInUpUserLinks">
-                              <Button variant="contained" color="primary">
-                                Sign Up
-                             </Button>
-                            </Link>
-                          </div>
+                      }
+                      <div className="SignInUpUserDiv">
+                        {user ? (
+                            <MyAccount className="SignInUpUserLinks" />
+                        ) : (
+                            <div>
+                              <Link to="/sign-in" className="SignInUpUserLinks">
+                                <Button variant="contained" color="primary">
+                                  Sign In
+                                </Button>
+                              </Link>
+                              <Link to="/sign-up" className="SignInUpUserLinks">
+                                <Button variant="contained" color="primary">
+                                  Sign Up
+                                </Button>
+                              </Link>
+                            </div>
                         )}
+                      </div>
                     </div>
+
                   </div>
                 </div>
               </Toolbar>
