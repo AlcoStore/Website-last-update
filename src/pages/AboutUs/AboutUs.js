@@ -58,7 +58,7 @@ class AboutUs extends React.Component {
             <div className="AboutUsContentDivBody">
               <div className="AboutUsContentDivBodyImage">
                 <img
-                  src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png"
+                  src="https://stepanabgaryan.github.io/images/home-bg.jpg"
                   alt="person"
                 />
               </div>
@@ -71,7 +71,7 @@ class AboutUs extends React.Component {
                 <br />
                 <br />
                 <div className="AboutUsContentDivDesc">
-                  Description About Me
+                  Entry Level Front End Web Developer
                   <br />
                   <br />
                   <a
@@ -114,7 +114,7 @@ class AboutUs extends React.Component {
             <div className="AboutUsContentDivBody">
               <div className="AboutUsContentDivBodyImage">
                 <img
-                  src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png"
+                  src="https://veronika-jaghinyan.github.io/images-cv/Veronika.jpg"
                   alt="person"
                 />
               </div>
@@ -127,7 +127,7 @@ class AboutUs extends React.Component {
                 <br />
                 <br />
                 <div className="AboutUsContentDivDesc">
-                  Description About Me
+                  Entry Level Front End Web Developer
                   <br />
                   <br />
                   <a
@@ -170,7 +170,7 @@ class AboutUs extends React.Component {
             <div className="AboutUsContentDivBody">
               <div className="AboutUsContentDivBodyImage">
                 <img
-                  src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png"
+                  src="https://avatars2.githubusercontent.com/u/51271586?s=460&v=4"
                   alt="person"
                 />
               </div>
@@ -183,11 +183,11 @@ class AboutUs extends React.Component {
                 <br />
                 <br />
                 <div className="AboutUsContentDivDesc">
-                  Description About Me
+                  Entry Level Front End Web Developer
                   <br />
                   <br />
                   <a
-                    href="https://www.youtube.com/</div>"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -210,7 +210,7 @@ class AboutUs extends React.Component {
                     <FaGithub className="AboutUsContentDivDescIcons AboutUsContentDivDescIcons1" />
                   </a>
                   <a
-                    href="https://www.youtube.com/"
+                    href="https://www.linkedin.com/in/gevorg-mamikonyan-102b67189/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -226,7 +226,7 @@ class AboutUs extends React.Component {
             <div className="AboutUsContentDivBody">
               <div className="AboutUsContentDivBodyImage">
                 <img
-                  src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png"
+                  src="https://avatars2.githubusercontent.com/u/50045319?s=460&v=4&fbclid=IwAR3uns0zLdjGuYPZNCvUNCuDTosVYjyCLGGm18BQKE5W0lC8rIa_4_NMuzo"
                   alt="person"
                 />
               </div>
@@ -239,11 +239,11 @@ class AboutUs extends React.Component {
                 <br />
                 <br />
                 <div className="AboutUsContentDivDesc">
-                  Description About Me
+                  Entry Level Front End Web Developer
                   <br />
                   <br />
                   <a
-                    href="https://www.youtube.com/"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -41,7 +41,7 @@ class DeleteDialog extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Are you going to delete your account from AlcoStore?
+              Are you sure you want to delete your account from AlcoStore?
             </DialogContentText>
           </DialogContent>
           <DialogActions>

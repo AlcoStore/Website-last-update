@@ -24,7 +24,7 @@ const styles = () => ({
     width: 450
   },
   wrapper: {
-    marginTop: 20,
+    marginTop: 15,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -112,6 +112,7 @@ class MyProfile extends React.Component {
         .doc(fire.auth().currentUser.uid)
         .update({ email: this.state.email, number: this.state.number });
     }
+    this.changeEmail();
     this.setState({ passwordConf: "" });
   };
 
@@ -126,13 +127,16 @@ class MyProfile extends React.Component {
   };
 
   changeEmail = () => {
+    this.setState({loader: true})
     const user = fire.auth().currentUser;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
       this.state.password
     );
+    console.log(credential)
     user.reauthenticateWithCredential(credential).then(() => {
       user.updateEmail(this.state.email);
+      this.setState({loader: false})
     });
   };
 

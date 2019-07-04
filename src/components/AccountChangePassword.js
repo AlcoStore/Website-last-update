@@ -8,6 +8,22 @@ import fire from "../Firebase/Fire";
 import firebase from "firebase";
 import TextField from "@material-ui/core/TextField";
 import Loader from "./Loader";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+
+const styles = () => ({
+  dialog: {
+    width: 285
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    padding: 15
+  }
+});
 
 class PasswordChange extends React.Component {
   constructor(props) {
@@ -68,17 +84,19 @@ class PasswordChange extends React.Component {
     if (this.state.password === this.state.passwordConf) {
       this.setState({ confirmed: true });
     } else {
-      this.setState({ error: "The password you entered is not correct" });
+      this.setState({ error: "The password you entered is not correct",
+      passwordConf: ''});
     }
   };
 
   changePassword = () => {
-    this.setState({loader: true})
+    this.setState({loader: true});
     const user = fire.auth().currentUser;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
       this.state.passwordConf
     );
+    console.log(credential)
     user.reauthenticateWithCredential(credential).then(() => {
       user.updatePassword(this.state.newPassword);
     }).then(()=> {this.setState({loader: false})});
@@ -98,6 +116,7 @@ class PasswordChange extends React.Component {
   };
 
   render() {
+    const {classes} = this.props;
     const {
       open,
       newPassword,
@@ -108,13 +127,15 @@ class PasswordChange extends React.Component {
         loader
     } = this.state;
     return (
-      <div>
+      <div className={classes.wrapper}>
         <Dialog
           open={open}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           onClose={this.handleClose}
+
         >
+          <Card className={classes.dialog}>
           <DialogTitle id="alert-dialog-title" onClose={this.handleClose}>
             {"Change Password"}
           </DialogTitle>
@@ -137,7 +158,8 @@ class PasswordChange extends React.Component {
                 value={passwordConf}
               />
             </div>
-            {error ? { error } : null}
+            <span style={{color: 'red'}}>{error}</span>
+          <br/>
             <Button
               variant="outlined"
               disabled={confirmed}
@@ -173,6 +195,8 @@ class PasswordChange extends React.Component {
                 value={newPasswordConf}
               />
             </div>
+          </DialogContent>
+          <CardActions>
             <Button
               variant="outlined"
               disabled={
@@ -190,12 +214,22 @@ class PasswordChange extends React.Component {
             <Button variant="outlined" onClick={this.handleClose}>
               Back
             </Button>
-          </DialogContent>
+          </CardActions>
+            {loader && <Loader/>}
+          </Card>
         </Dialog>
-        {loader && <Loader/>}
+
       </div>
     );
   }
 }
 
-export default PasswordChange;
+
+PasswordChange.propTypes = {
+  classes: PropTypes.shape({
+    dialog: PropTypes.string,
+    wrapper: PropTypes.string
+  })
+};
+
+export default withStyles(styles)(PasswordChange);
